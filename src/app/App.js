@@ -1,18 +1,15 @@
-import Button from "../components/buttons";
+import React, { useState, useEffect } from 'react';
+import { Button, StartButton, PauseButton, ResetButton } from "../components/buttons";
 import "./App.css";
 import io from 'socket.io-client';
-
-import React, { useState, useEffect } from 'react';
-
 
 const MyComponent = () => {
  const [socket, setSocket] = useState(null);
 
  useEffect(() => {
-    const socketInstance = io('http://localhost:3000/'); // Remplacez 'http://localhost:5000' par l'URL de votre serveur Socket.IO
+    const socketInstance = io('http://localhost:3000/');
     setSocket(socketInstance);
 
-    // Écoutez les événements émis par le serveur
     socketInstance.on('connect', () => {
       console.log('Connecté au serveur');
     });
@@ -32,12 +29,16 @@ const MyComponent = () => {
 };
 
 function App() {
-  return (
+ return (
     <div className="App">
       <h1>ALLO</h1>
       <Button text={"golem"} color={"green"} functions={() => alert("test")} />
+      {/* Ajout des boutons Start, Pause, Reset */}
+      <StartButton functions={() => console.log("Start")} disabled={false} />
+      <PauseButton functions={() => console.log("Pause")} disabled={false} />
+      <ResetButton functions={() => console.log("Reset")} disabled={false} />
     </div>
-  );
+ );
 }
 
 export default App;

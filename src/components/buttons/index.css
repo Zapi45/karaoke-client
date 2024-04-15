@@ -1,9 +1,51 @@
+/* Styles globaux pour les boutons */
 .btn {
-  padding: 5px;
-  border: 0px;
-  border-radius: 10px;
-  font-size: 1vw;
-  width: 6vw;
-  height: 2vw;
-  text-align: center;
-}
+  border: none;
+  outline: none;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+ }
+ 
+ /* Styles spécifiques pour les boutons de taille petite */
+ .btn.small {
+  font-size: 14px;
+  padding: 5px 10px;
+ }
+ 
+ /* Styles spécifiques pour les boutons de taille grande */
+ .btn.large {
+  font-size: 20px;
+  padding: 15px 25px;
+ }
+ 
+ /* Styles spécifiques pour les boutons de couleur verte (StartButton) */
+ .btn.green {
+  background-color: #4CAF50;
+  color: white;
+ }
+ 
+ /* Styles spécifiques pour les boutons de couleur rouge (PauseButton) */
+ .btn.red {
+  background-color: #f44336;
+  color: white;
+ }
+ 
+ /* Styles spécifiques pour les boutons de couleur bleue (ResetButton) */
+ .btn.blue {
+  background-color: #2196F3;
+  color: white;
+ }
+ 
+ /* Effet de survol pour tous les boutons */
+ .btn:hover {
+  opacity: 0.8;
+ }
+ 
+ /* Effet de désactivation pour les boutons désactivés */
+ .btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+ }
