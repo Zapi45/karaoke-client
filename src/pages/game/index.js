@@ -1,10 +1,11 @@
+import { useNavigate } from "react-router";
 import Button from "../../components/buttons/index";
 import Gameboard from "../../components/gameboard/index";
 
 const Game = () => {
   return (
     <>
-      <h1>Homepage</h1>
+      <h1>Game</h1>
       <div className="interface">
         <Gameboard width={"60vw"}>
           <Button

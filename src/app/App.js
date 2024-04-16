@@ -4,6 +4,7 @@ import io from "socket.io-client";
 import React, { useState, useEffect } from "react";
 import Homepage from "../pages/homepage";
 import Game from "../pages/game";
+import { Route, Routes } from "react-router";
 
 const MyComponent = () => {
   const [socket, setSocket] = useState(null);
@@ -34,8 +35,10 @@ const MyComponent = () => {
 function App() {
   return (
     <div className="App">
-      <Homepage />
-      <Game />
+      <Routes>
+        <Route index path="/" element={<Homepage />} />
+        <Route path="/game" element={<Game />} />
+      </Routes>
     </div>
   );
 }
