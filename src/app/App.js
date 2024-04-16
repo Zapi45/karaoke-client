@@ -1,23 +1,23 @@
 import Button from "../components/buttons";
 import "./App.css";
-import io from 'socket.io-client';
+import io from "socket.io-client";
 
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from "react";
+import Gameboard from "../components/gameboard";
 
 const MyComponent = () => {
- const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useState(null);
 
- useEffect(() => {
-    const socketInstance = io('http://localhost:3000/'); // Remplacez 'http://localhost:5000' par l'URL de votre serveur Socket.IO
+  useEffect(() => {
+    const socketInstance = io("http://localhost:3000/"); // Remplacez 'http://localhost:5000' par l'URL de votre serveur Socket.IO
     setSocket(socketInstance);
 
     // Écoutez les événements émis par le serveur
-    socketInstance.on('connect', () => {
-      console.log('Connecté au serveur');
+    socketInstance.on("connect", () => {
+      console.log("Connecté au serveur");
     });
 
-    socketInstance.on('message', (data) => {
+    socketInstance.on("message", (data) => {
       console.log(`Message reçu: ${data}`);
     });
 
@@ -26,16 +26,26 @@ const MyComponent = () => {
         socketInstance.disconnect();
       }
     };
- }, []);
+  }, []);
 
- // Le reste de votre composant ici
+  // Le reste de votre composant ici
 };
 
 function App() {
   return (
     <div className="App">
       <h1>ALLO</h1>
-      <Button text={"golem"} color={"green"} functions={() => alert("test")} />
+      <div className="interface">
+        <Gameboard width={"18vw"} />
+        <Gameboard width={"60vw"}>
+          <Button
+            text={"start"}
+            color={"green"}
+            functions={() => alert("test")}
+          />
+        </Gameboard>
+        <Gameboard width={"18vw"} />
+      </div>
     </div>
   );
 }
