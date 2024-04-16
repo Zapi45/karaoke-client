@@ -1,9 +1,9 @@
-import Button from "../components/buttons";
 import "./App.css";
 import io from "socket.io-client";
 
 import React, { useState, useEffect } from "react";
-import Gameboard from "../components/gameboard";
+import Homepage from "../pages/homepage";
+import Game from "../pages/game";
 
 const MyComponent = () => {
   const [socket, setSocket] = useState(null);
@@ -34,18 +34,8 @@ const MyComponent = () => {
 function App() {
   return (
     <div className="App">
-      <h1>ALLO</h1>
-      <div className="interface">
-        <Gameboard width={"18vw"} />
-        <Gameboard width={"60vw"}>
-          <Button
-            text={"start"}
-            color={"green"}
-            functions={() => alert("test")}
-          />
-        </Gameboard>
-        <Gameboard width={"18vw"} />
-      </div>
+      <Homepage />
+      <Game />
     </div>
   );
 }
