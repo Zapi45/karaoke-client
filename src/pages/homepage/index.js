@@ -1,9 +1,13 @@
+import { useState } from "react";
 import Button from "../../components/buttons/index";
 import Gameboard from "../../components/gameboard/index";
 import { useNavigate } from "react-router";
+import Popup from "../../components/popup";
 
 const Homepage = () => {
   const navigate = useNavigate();
+
+  const [join, setJoin] = useState(false);
 
   return (
     <>
@@ -13,7 +17,7 @@ const Homepage = () => {
           <Button
             text={"join game"}
             color={"green"}
-            functions={() => navigate("/game")}
+            functions={() => setJoin(true)}
           />
           <Button
             text={"create game"}
@@ -22,6 +26,7 @@ const Homepage = () => {
           />
         </Gameboard>
       </div>
+      {join ? <Popup></Popup> : <></>}
     </>
   );
 };

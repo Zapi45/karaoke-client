@@ -1,0 +1,18 @@
+.popup-screen {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-screen .popup {
+  width: 40vw;
+  height: 60vh;
+  border: 2px solid black;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
+  border-radius: 10px;
+}
