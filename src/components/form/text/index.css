@@ -1,0 +1,17 @@
+.input-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-div label {
+  text-align: left;
+  font-size: 2vh;
+}
+
+.input-div input[type="text"] {
+  height: 3vh;
+  font-size: 3vh;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid black;
+}

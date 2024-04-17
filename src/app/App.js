@@ -37,7 +37,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route index path="/" element={<Homepage />} />
-        <Route path="/game" element={<Game />} />
+        <Route path="/game?username:username&code:code" element={<Game />} />
       </Routes>
     </div>
   );
