@@ -5,7 +5,7 @@ import Gameboard from "../../components/gameboard/index";
 import { useEffect, useState } from "react";
 import PlayerInfo from "../../components/playerInfo";
 import placeholder from "../../assets/img/profil.jpg";
-
+import Chat from "../../components/chat";
 const Game = () => {
   const query = useQuery();
 
@@ -29,7 +29,9 @@ const Game = () => {
           ))}
         </Gameboard>
         <Gameboard width={"60vw"}></Gameboard>
-        <Gameboard width={"18vw"} />
+        <Gameboard width={"18vw"}>
+          <Chat></Chat>
+        </Gameboard>
       </div>
     </>
   );
