@@ -64,6 +64,7 @@ const Homepage = () => {
               id="code"
               onChange={handleChange("code")}
               label={"gamecode"}
+              required
             ></TextInput>
           </FormTemplate>
         </Popup>
@@ -72,7 +73,7 @@ const Homepage = () => {
       )}
       {invalid ? (
         <Popup>
-          <h3>La salle est inexistante</h3>
+          <h3>La salle n'existe pas</h3>
           <Button
             text={"Retour"}
             color={"lightred"}

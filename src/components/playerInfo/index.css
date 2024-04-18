@@ -1,0 +1,17 @@
+.player-info {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  margin: 2px;
+  font-size: 1vw;
+  align-items: center;
+}
+
+.player-info img {
+  width: auto;
+  max-height: 9dvh;
+  border-radius: 2px;
+}
