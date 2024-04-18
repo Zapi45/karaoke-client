@@ -58,6 +58,7 @@ const Homepage = () => {
               id="username"
               onChange={handleChange("username")}
               label={"username"}
+              required
             ></TextInput>
             <TextInput
               id="code"
