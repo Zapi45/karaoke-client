@@ -15,13 +15,13 @@ const Homepage = () => {
   });
 
   const [join, setJoin] = useState(false);
+  const [create, setCreate] = useState(false);
   const [invalid, setInvalid] = useState(false);
 
   const codes = ["ABCDEF", "AREDFF"];
 
   const handleChange = (prop) => (e) => {
     setValues({ ...values, [prop]: e.target.value });
-    console.log(values);
   };
 
   function joinGame(e) {
@@ -32,6 +32,16 @@ const Homepage = () => {
       setJoin(false);
       setInvalid(true);
     }
+  }
+
+  function createGame(e) {
+    e.preventDefault();
+    let code = "";
+    for (let i = 0; i < 5; i++) {
+      let rand = Math.floor(Math.random() * 10);
+      code += rand;
+    }
+    navigate(`/game?username=${values.username}&code=${code}`);
   }
 
   return (
@@ -47,7 +57,7 @@ const Homepage = () => {
           <Button
             text={"Créer"}
             color={"lightblue"}
-            functions={() => alert("test")}
+            functions={() => setCreate(true)}
           />
         </Gameboard>
       </div>
@@ -64,6 +74,20 @@ const Homepage = () => {
               id="code"
               onChange={handleChange("code")}
               label={"gamecode"}
+              required
+            ></TextInput>
+          </FormTemplate>
+        </Popup>
+      ) : (
+        <></>
+      )}
+      {create ? (
+        <Popup>
+          <FormTemplate onSubmit={(e) => createGame(e)}>
+            <TextInput
+              id="username"
+              onChange={handleChange("username")}
+              label={"username"}
               required
             ></TextInput>
           </FormTemplate>
