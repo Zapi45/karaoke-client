@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../components/buttons/index";
 import Gameboard from "../../components/gameboard/index";
 import { useNavigate } from "react-router";
@@ -14,15 +14,24 @@ const Homepage = () => {
     code: "",
   });
 
+  const [join, setJoin] = useState(false);
+  const [invalid, setInvalid] = useState(false);
+
+  const codes = ["ABCDEF", "AREDFF"];
+
   const handleChange = (prop) => (e) => {
     setValues({ ...values, [prop]: e.target.value });
     console.log(values);
   };
 
-  const [join, setJoin] = useState(false);
-
-  function joinGame() {
-    navigate(`/game?username=${values.username}&code=${values.code}`);
+  function joinGame(e) {
+    e.preventDefault();
+    if (codes.some((code) => values.code === code)) {
+      navigate(`/game?username=${values.username}&code=${values.code}`);
+    } else {
+      setJoin(false);
+      setInvalid(true);
+    }
   }
 
   return (
@@ -44,18 +53,30 @@ const Homepage = () => {
       </div>
       {join ? (
         <Popup>
-          <FormTemplate onSubmit={() => joinGame()}>
+          <FormTemplate onSubmit={(e) => joinGame(e)}>
             <TextInput
               id="username"
-              onChange={() => handleChange("username")}
+              onChange={handleChange("username")}
               label={"username"}
             ></TextInput>
             <TextInput
               id="code"
-              onChange={() => handleChange("code")}
+              onChange={handleChange("code")}
               label={"gamecode"}
             ></TextInput>
           </FormTemplate>
+        </Popup>
+      ) : (
+        <></>
+      )}
+      {invalid ? (
+        <Popup>
+          <h3>La salle est inexistante</h3>
+          <Button
+            text={"Retour"}
+            color={"lightred"}
+            functions={() => setInvalid(false)}
+          />
         </Popup>
       ) : (
         <></>
