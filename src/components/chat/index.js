@@ -2,40 +2,35 @@ import { useState } from "react";
 import TextInput from "../form/text";
 import { useEffect } from "react";
 import io from "socket.io-client";
+import "./index.css";
+import Button from "../buttons";
 
-const Chat = () => {
-  const [socket, setSocket] = useState(null);
+const Chat = (props) => {
+  const [prevMessage, setPrevMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [value, setValue] = useState("");
+
   const handleChange = (prop) => (e) => {
     setValue(e.target.value);
   };
 
   useEffect(() => {
-    const socketInstance = io("http://localhost:8000"); // Remplacez 'http://localhost:5000' par l'URL de votre serveur Socket.IO
-    setSocket(socketInstance);
-
-    console.log(socketInstance);
-    // Écoutez les événements émis par le serveur
-    socketInstance.on("connect", () => {
-      console.log("Connecté au serveur");
-    });
-
-    socketInstance.on("messageSent", (data) => {
+    props.socket.on("messageSent", (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
     });
   }, []);
 
   function handleMessage(e) {
     e.preventDefault();
+    console.log(e);
     if (value) {
-      socket.emit("chat message", value);
+      props.socket.emit("chat message", value);
       setValue("");
     }
   }
 
   return (
-    <>
+    <div className="chat">
       <ul id="messages">
         {messages.map((message) => (
           <li>{message}</li>
@@ -43,14 +38,14 @@ const Chat = () => {
       </ul>
       <form id="form" onSubmit={(e) => handleMessage(e)}>
         <TextInput
+          value={value}
           id="message"
           onChange={handleChange()}
-          label={"message"}
           required
         />
-        <button>Send</button>
+        <Button text={"Envoyer"} color={"lightblue"} />{" "}
       </form>
-    </>
+    </div>
   );
 };
 

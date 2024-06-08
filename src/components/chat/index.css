@@ -1,0 +1,19 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.chat ul {
+  height: 92%;
+  overflow: scroll;
+}
+
+.chat form {
+  height: 8%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 60% 40%;
+  background-color: lightgray;
+}

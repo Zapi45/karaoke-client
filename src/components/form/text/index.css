@@ -8,7 +8,7 @@
   font-size: 2vh;
 }
 
-.input-div input[type="text"] {
+.input-div .input-text {
   height: 3vh;
   font-size: 3vh;
   padding: 10px;

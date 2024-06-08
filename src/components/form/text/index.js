@@ -5,6 +5,8 @@ const TextInput = (props) => {
     <div className="input-div">
       <label>{props.label}</label>
       <input
+        value={props.value}
+        className="input-text"
         placeholder={props.placeholder}
         onChange={props.onChange}
         type="text"

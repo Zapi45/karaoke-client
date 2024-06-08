@@ -3,6 +3,7 @@
   border: 1px solid black;
   border-radius: 10px;
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }

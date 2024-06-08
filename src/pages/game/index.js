@@ -6,7 +6,16 @@ import { useEffect, useState } from "react";
 import PlayerInfo from "../../components/playerInfo";
 import placeholder from "../../assets/img/profil.jpg";
 import Chat from "../../components/chat";
+import { socket } from "../../functions/socket";
+
 const Game = () => {
+  function connect() {
+    socket.connect();
+  }
+
+  useEffect(() => {
+    connect();
+  }, []);
   const query = useQuery();
 
   const [players, setPlayers] = useState([
@@ -30,7 +39,7 @@ const Game = () => {
         </Gameboard>
         <Gameboard width={"60vw"}></Gameboard>
         <Gameboard width={"18vw"}>
-          <Chat></Chat>
+          <Chat socket={socket}></Chat>
         </Gameboard>
       </div>
     </>
