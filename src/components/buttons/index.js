@@ -12,7 +12,7 @@ const Button = (props) => {
       <input
         className="btn"
         style={currentStyle}
-        type="button"
+        type={props.type}
         onClick={props.functions}
         onMouseEnter={() => setBackgroundColor("#f8f7f4")}
         onMouseLeave={() => setBackgroundColor(props.color)}

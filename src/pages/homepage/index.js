@@ -52,10 +52,12 @@ const Homepage = () => {
           <Button
             text={"Rejoindre"}
             color={"lightgreen"}
+            type="button"
             functions={() => setJoin(true)}
           />
           <Button
             text={"Créer"}
+            type="button"
             color={"lightblue"}
             functions={() => setCreate(true)}
           />

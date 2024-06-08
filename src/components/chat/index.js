@@ -22,7 +22,6 @@ const Chat = (props) => {
 
   function handleMessage(e) {
     e.preventDefault();
-    console.log(e);
     if (value) {
       props.socket.emit("chat message", value);
       setValue("");
@@ -32,8 +31,8 @@ const Chat = (props) => {
   return (
     <div className="chat">
       <ul id="messages">
-        {messages.map((message) => (
-          <li>{message}</li>
+        {messages.map((message, index) => (
+          <li key={message + index}>{message}</li>
         ))}
       </ul>
       <form id="form" onSubmit={(e) => handleMessage(e)}>
@@ -43,7 +42,7 @@ const Chat = (props) => {
           onChange={handleChange()}
           required
         />
-        <Button text={"Envoyer"} color={"lightblue"} />{" "}
+        <Button type="submit" text={"Envoyer"} color={"lightblue"} />{" "}
       </form>
     </div>
   );
