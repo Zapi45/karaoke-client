@@ -5,6 +5,7 @@ body {
   background-color: #f8f7f4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./assets/img/background.jpg');
 }
 
 code {

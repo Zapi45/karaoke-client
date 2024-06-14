@@ -46,7 +46,7 @@ const Homepage = () => {
 
   return (
     <>
-      <h1>Homepage</h1>
+      <h1>Blind Karaoke</h1>
       <div className="interface">
         <Gameboard width={"60vw"}>
           <Button
