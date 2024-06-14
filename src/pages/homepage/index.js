@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import Popup from "../../components/popup";
 import FormTemplate from "../../components/form/Index";
 import TextInput from "../../components/form/text";
+import { fetchApi } from "../../functions/fetchApi";
 
 const Homepage = () => {
   const navigate = useNavigate();
@@ -34,14 +35,10 @@ const Homepage = () => {
     }
   }
 
-  function createGame(e) {
+  async function createGame(e) {
     e.preventDefault();
-    let code = "";
-    for (let i = 0; i < 5; i++) {
-      let rand = Math.floor(Math.random() * 10);
-      code += rand;
-    }
-    navigate(`/game?username=${values.username}&code=${code}`);
+    let data = await fetchApi("GET", "create-room");
+    navigate(`/game?username=${values.username}&code=${data.room_code}`);
   }
 
   return (
