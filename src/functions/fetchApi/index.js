@@ -6,7 +6,7 @@ export function fetchApi(method, action, id) {
       return response.json();
     })
     .then((data) => {
-      if (data.succes) {
+      if (data.success) {
         return data.data;
       }
     })

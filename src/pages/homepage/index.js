@@ -26,9 +26,11 @@ const Homepage = () => {
     setValues({ ...values, [prop]: e.target.value });
   };
 
-  function joinGame(e) {
+  async function joinGame(e) {
     e.preventDefault();
-    if (codes.some((code) => values.code === code)) {
+    let data = await fetchApi("GET", "join-room?code=" + values.code);
+    console.log(data);
+    if (data.room_code) {
       navigate(`/game?username=${values.username}&code=${values.code}`);
     } else {
       setJoin(false);
