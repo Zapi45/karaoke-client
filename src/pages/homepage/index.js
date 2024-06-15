@@ -6,6 +6,7 @@ import Popup from "../../components/popup";
 import FormTemplate from "../../components/form/Index";
 import TextInput from "../../components/form/text";
 import { fetchApi } from "../../functions/fetchApi";
+import { io } from "socket.io-client";
 
 const Homepage = () => {
   const navigate = useNavigate();

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import io from "socket.io-client";
 import "./index.css";
 import Button from "../buttons";
+import useQuery from "../../functions/useQuery";
 
 const Chat = (props) => {
   const [prevMessage, setPrevMessage] = useState("");
@@ -14,6 +15,9 @@ const Chat = (props) => {
     setValue(e.target.value);
   };
 
+  const query = useQuery();
+  const currentCode = query.get("code");
+
   useEffect(() => {
     props.socket.on("messageSent", (data) => {
       setMessages((prevMessages) => [...prevMessages, data]);
@@ -23,7 +27,7 @@ const Chat = (props) => {
   function handleMessage(e) {
     e.preventDefault();
     if (value) {
-      props.socket.emit("chat message", value);
+      props.socket.emit("chat message", value, currentCode);
       setValue("");
     }
   }

@@ -9,14 +9,17 @@ import Chat from "../../components/chat";
 import { socket } from "../../functions/socket";
 
 const Game = () => {
+  const query = useQuery();
+  const currentCode = query.get("code");
+
   function connect() {
     socket.connect();
+    socket.emit("join_room", currentCode);
   }
 
   useEffect(() => {
     connect();
   }, []);
-  const query = useQuery();
 
   const [players, setPlayers] = useState([
     {
@@ -25,8 +28,6 @@ const Game = () => {
       profil: placeholder,
     },
   ]);
-
-  const currentCode = query.get("code");
 
   return (
     <>
