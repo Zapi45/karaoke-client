@@ -29,9 +29,9 @@ const Homepage = () => {
   async function joinGame(e) {
     e.preventDefault();
     let data = await fetchApi("GET", "join-room?code=" + values.code);
-    console.log(data);
     if (data.room_code) {
-      navigate(`/game?username=${values.username}&code=${values.code}`);
+      localStorage.setItem("username", values.username);
+      navigate(`/game?code=${values.code}`);
     } else {
       setJoin(false);
       setInvalid(true);
@@ -41,7 +41,9 @@ const Homepage = () => {
   async function createGame(e) {
     e.preventDefault();
     let data = await fetchApi("GET", "create-room");
-    navigate(`/game?username=${values.username}&code=${data.room_code}`);
+    localStorage.setItem("username", values.username);
+    console.log(data);
+    navigate(`/game?code=${data.room_code}`);
   }
 
   return (

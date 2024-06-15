@@ -27,7 +27,12 @@ const Chat = (props) => {
   function handleMessage(e) {
     e.preventDefault();
     if (value) {
-      props.socket.emit("chat message", value, currentCode);
+      props.socket.emit(
+        "chat message",
+        localStorage.getItem("username"),
+        value,
+        currentCode
+      );
       setValue("");
     }
   }
@@ -36,7 +41,10 @@ const Chat = (props) => {
     <div className="chat">
       <ul id="messages">
         {messages.map((message, index) => (
-          <li key={message + index}>{message}</li>
+          <li key={message + index}>
+            <span>{message.username}: </span>
+            {message.message}
+          </li>
         ))}
       </ul>
       <form id="form" onSubmit={(e) => handleMessage(e)}>
